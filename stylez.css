@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* F953C6 */
+
+body {
+    font-family: "Owsald", sans-serif;
+}
+
+header {
+    margin: 0 auto;
+    height: 10vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+main {
+    text-align: center;
+}
