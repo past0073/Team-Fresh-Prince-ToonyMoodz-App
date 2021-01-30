@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOONY MOODZ</title>
-    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylez.css">
 </head>
 <body>
@@ -13,11 +13,15 @@
     </header>
     <main>
         <div class="title-cnt">
-            <h1>Toony<span>Moodz</span></h1>
-            <p>A dynamic weather app that sounds how you feel</p>
-            <input type="text" placeholder="City, State, Zip code....">
+            <h1 class="title text-4xl sm:text-5xl lg:text-6xl mb-1">Toony<span>Moodz</span></h1>
+            <p class="subtitle mt-1 text-xs sm:text-xl">A dynamic weather app that sounds how you feel</p>
+            <div class="search-cnt">
+                <input class="search-bar mt-4 px-1 sm:py-2 sm:px-3" type="text" placeholder="City, State, Zip code....">
+                <img src="assets/search29.png" alt="" class="search-icon">
+            </div>
+            
+            <button id="testBtn">BACKEND TEST BUTTON</button>
         </div>
-        <h2>TESTING</h2>
     </main>
 </body>
 </html>
