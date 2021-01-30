@@ -20,6 +20,10 @@ header {
     flex-direction: row-reverse;
 }
 
+header img {
+    cursor: pointer;
+}
+
 main {
     text-align: center;
 }
