@@ -14,7 +14,7 @@ const settings = {
         }
 
     $.ajax(settings).done(function (response) {
-        
+
         //First search result
         var newEl = $("<source>");
         newEl.attr("src", response.data[0].preview);
@@ -26,6 +26,24 @@ const settings = {
         newEl.attr("src", response.data[1].preview);
         newEl.attr("type", "audio/mpeg");
         $("#song").prepend(newEl);
-          console.log(response);
+   
+        //Third search result
+        var newEl = $("<source>");
+        newEl.attr("src", response.data[2].preview);
+        newEl.attr("type", "audio/mpeg");
+        $("#song").prepend(newEl);
+             
+        //Fourth search result
+        var newEl = $("<source>");
+        newEl.attr("src", response.data[2].preview);
+        newEl.attr("type", "audio/mpeg");
+        $("#song").prepend(newEl);
+
+        //Fifth search result
+        var newEl = $("<source>");
+        newEl.attr("src", response.data[2].preview);
+        newEl.attr("type", "audio/mpeg");
+        $("#song").prepend(newEl);
+
         });
 });
