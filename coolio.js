@@ -37,34 +37,34 @@ $(".search-icon").on("click", function(e) {
         console.log(weatherCode);
         
         if (weatherCode > 199 && weatherCode < 234) {
-            query = stormySongs[0];
+            query = stormySongs[Math.floor(Math.random()*stormySongs.length)];
         }
         else if (weatherCode > 299 && weatherCode < 523) {
-            query = rainySongs[0];
+            query = rainySongs[Math.floor(Math.random()*rainySongs.length)];
         }
         else if (weatherCode > 599 && weatherCode < 624) {
-            query = snowySongs[0];
+            query = snowySongs[Math.floor(Math.random()*snowySongs.length)];
         } 
         else if (weatherCode > 699 && weatherCode < 701) {
-            query = mistySongs[0];
+            query = mistySongs[Math.floor(Math.random()*mistySongs.length)];
         } 
         else if (weatherCode > 730 && weatherCode < 732) {
-            query = sandySongs[0];
+            query = sandySongs[Math.floor(Math.random()*sandySongs.length)];
         } 
         else if (weatherCode > 710 && weatherCode < 712) {
-            query = smokySongs[0];
+            query = smokySongs[Math.floor(Math.random()*smokySongs.length)];
         } 
         else if (weatherCode > 720 && weatherCode < 722) {
-            query = hazySongs[0];
+            query = hazySongs[Math.floor(Math.random()*hazySongs.length)];
         } 
         else if (weatherCode > 740 && weatherCode < 742) {
-            query = foggySongs[0];
+            query = foggySongs[Math.floor(Math.random()*foggySongs.length)];
         } 
         else if (weatherCode > 799 && weatherCode < 803) {
-            query = sunnySongs[0];
+            query = sunnySongs[Math.floor(Math.random()*sunnySongs.length)];
         } 
         else {
-            query = cloudySongs[0];
+            query = cloudySongs[Math.floor(Math.random()*cloudySongs.length)];
         }
 
         runDeezerAPI();
