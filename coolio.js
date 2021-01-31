@@ -129,6 +129,12 @@ const settings = {
         albumEl = $("<img>");
         albumEl.attr("src", response.album.cover_medium);
         $("#music-display").append(albumEl);
-
+        
+        
+        var rythm = new Rythm()
+        rythm.crossOrigin = "anonymous"
+        rythm.setMusic(response.preview)
+        rythm.start()
         });
 };
+
