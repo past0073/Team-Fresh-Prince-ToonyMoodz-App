@@ -1,5 +1,6 @@
 $(".search-icon").on("click", function(e) {
     e.preventDefault(); 
+    $("weather-display").empty();
     var city = $(".search-bar").val().trim();
     const settings = {
         "async": true,
@@ -19,7 +20,15 @@ $(".search-icon").on("click", function(e) {
         var icon = "https://www.weatherbit.io/static/img/icons/" + response.data[0].weather.icon + ".png";
         var newIcon = $("<img>");
         newIcon.attr("src", icon);
-        $(".title-cnt").append(newIcon);
+        $("#weather-display").append(newIcon);
+
+        var weatherData = [response.data[0].weather.description, "Temperature: " + response.data[0].temp, "Wind: " + response.data[0].wind_spd];
+        for (i = 0; i < weatherData.length; i++) {
+            var newWeatherItem = $("<p>");
+            newWeatherItem.text(weatherData[i]);
+            newWeatherItem.attr("class", "weather-item");
+            $("#weather-display").append(newWeatherItem);
+        }
 
         //Song arrays for each type of weather condition:
         sunnySongs = ["3166724", "1175777", "75711295", "666286232", "90326361", "1094034052", "828216172", "1040347", "116348464", "1106540662", "3091978"];
@@ -97,6 +106,7 @@ const settings = {
         audioEl.attr("id", "song");
         audioEl.attr("autoplay", true);
         audioEl.attr("controls", true);
+        audioEl.attr("volume", 0.01);
         $("#music-display").prepend(audioEl);
 
         //Append song to audio player div
@@ -104,6 +114,15 @@ const settings = {
         songEl.attr("src", response.preview);
         songEl.attr("type", "audio/mpeg");
         audioEl.prepend(songEl);
+
+        //Append song title
+        titleEl = $("<p>");
+        titleEl.html(response.title);
+        $("#music-display").append(titleEl);
+      
+        //Append artist
+
+        //Append album art
 
         });
 };
