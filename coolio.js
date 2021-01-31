@@ -22,25 +22,46 @@ $(".search-icon").on("click", function(e) {
         $(".title-cnt").append(newIcon);
 
         //Song arrays for each type of weather condition:
-        sunnySongs = ["3166724", "1175777", "75711295", "666286232", "90326361"];
-        partsunnySongs = ["1094034052", "828216172", "1040347", "116348464", "1106540662", "3091978"];
-        partcloudySongs = ["3599559", "9956008", "65707299", "581533", "144469614"];
-        cloudySongs = ["482643502", "2607674", "1101367912", "121876594", "75623960", "637766082", "3128096"]
+        sunnySongs = ["3166724", "1175777", "75711295", "666286232", "90326361", "1094034052", "828216172", "1040347", "116348464", "1106540662", "3091978"];
+        cloudySongs = ["482643502", "2607674","3599559", "9956008", "65707299", "581533", "144469614", "1101367912", "121876594", "75623960", "637766082", "3128096"]
         rainySongs = ["6069361", "1169683", "2794654", "705016142"];
         snowySongs = ["3659065", "111624866", "75624084", "576178942"];
         stormySongs = ["65445466", "1205382872", "92720102"];
+        mistySongs = ["1067282122"];
+        sandySongs = ["88954303"];
+        smokySongs = ["14619515"];
+        hazySongs = ["4952885"];
+        foggySongs = ["1204958922"];
 
-        cloudCoverage = response.data[0].clouds
-        console.log(cloudCoverage);
+        weatherCode = response.data[0].weather.code
+        console.log(weatherCode);
         
-        if (response.data[0].clouds < 25) {
+        if (weatherCode > 199 && weatherCode < 234) {
+            query = stormySongs[0];
+        }
+        else if (weatherCode > 299 && weatherCode < 523) {
+            query = rainySongs[0];
+        }
+        else if (weatherCode > 599 && weatherCode < 624) {
+            query = snowySongs[0];
+        } 
+        else if (weatherCode > 699 && weatherCode < 701) {
+            query = mistySongs[0];
+        } 
+        else if (weatherCode > 730 && weatherCode < 732) {
+            query = sandySongs[0];
+        } 
+        else if (weatherCode > 710 && weatherCode < 712) {
+            query = smokySongs[0];
+        } 
+        else if (weatherCode > 720 && weatherCode < 722) {
+            query = hazySongs[0];
+        } 
+        else if (weatherCode > 740 && weatherCode < 742) {
+            query = foggySongs[0];
+        } 
+        else if (weatherCode > 799 && weatherCode < 803) {
             query = sunnySongs[0];
-        }
-        else if (response.data[0].clouds > 25 && response.data[0].clouds < 50) {
-            query = partsunnySongs[0];
-        }
-        else if (response.data[0].clouds > 50 && response.data[0].clouds < 75) {
-            query = partcloudySongs[0];
         } 
         else {
             query = cloudySongs[0];
