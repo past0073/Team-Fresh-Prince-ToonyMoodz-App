@@ -117,12 +117,18 @@ const settings = {
 
         //Append song title
         titleEl = $("<p>");
-        titleEl.html(response.title);
+        titleEl.html("Track title: " + response.title);
         $("#music-display").append(titleEl);
       
         //Append artist
+        artistEl = $("<p>");
+        artistEl.html("Artist: " + response.artist.name);
+        $("#music-display").append(artistEl);
 
         //Append album art
+        albumEl = $("<img>");
+        albumEl.attr("src", response.album.cover_medium);
+        $("#music-display").append(albumEl);
 
         });
 };
