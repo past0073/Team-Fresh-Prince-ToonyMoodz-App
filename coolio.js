@@ -1,6 +1,6 @@
 $(".search-icon").on("click", function(e) {
     e.preventDefault(); 
-    $("weather-display").empty();
+    $("#weather-display").empty();
     var city = $(".search-bar").val().trim();
     const settings = {
         "async": true,
@@ -43,7 +43,6 @@ $(".search-icon").on("click", function(e) {
         foggySongs = ["1204958922"];
 
         weatherCode = response.data[0].weather.code
-        console.log(weatherCode);
         
         if (weatherCode > 199 && weatherCode < 234) {
             query = stormySongs[Math.floor(Math.random()*stormySongs.length)];
@@ -84,9 +83,8 @@ function runDeezerAPI() {
 
     event.preventDefault();
     $("#music-display").empty();
-    console.log(query);
 
-const settings = {
+    const settings = {
         "async": true,
             "crossDomain": true,
             "url": "https://deezerdevs-deezer.p.rapidapi.com/track/" + query,
