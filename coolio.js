@@ -155,8 +155,7 @@ function auto(){
 
     const autocomplete = new google.maps.places.Autocomplete(input, options);
     const place = autocomplete.getPlace();
-    console.log(place);
-    return place;
+
 }
 google.maps.event.addDomListener(window, 'load', auto);
-console.log(place.formatted_address);
+
