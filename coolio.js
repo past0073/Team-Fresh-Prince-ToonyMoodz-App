@@ -18,7 +18,7 @@ $(".search-icon").on("click", function(e) {
         newIcon.attr("src", icon);
         $("#weather-display").append(newIcon);
 
-        var weatherData = [response.data[0].weather.description, "Temperature: " + response.data[0].temp, "Wind: " + response.data[0].wind_spd];
+        var weatherData = [response.data[0].weather.description, "Temperature: " + Math.floor(response.data[0].temp) + " °F", "Wind: " + response.data[0].wind_spd + " MPH"];
         for (i = 0; i < weatherData.length; i++) {
             var newWeatherItem = $("<p>");
             newWeatherItem.text(weatherData[i]);
