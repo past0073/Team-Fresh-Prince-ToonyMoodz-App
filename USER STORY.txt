@@ -1,0 +1,50 @@
+USER STORY
+AS A user with an authenticated spotify account
+I WANT to generate a travel playlist based on my travel time
+SO THAT I can enjoy music on my road trip or what have you 
+
+ACCEPTANCE CRITERIA
+GIVEN I am a spotify user traveling somehwere
+WHEN I open the page
+THEN I can enter my destination in Google Maps
+THEN I get direction and a travel time
+WHEN I get my directions and travel time
+THEN the page requests my input for favorite artists and genres
+WHEN I provide input for favorite artists and genres
+THEN the app creates a playlist that matches travel time length and contains my favorite music
+
+<JUMBOTRON HEADER>
+<content window>
+    <Description>
+
+    <Questions>
+        <Starting Location>
+            <Type in option, or select "My Location">
+        <Destination>
+            <Type in Destination>
+        <Travel Method>
+            <Drive, walk, bike, public transportation>
+        <Enter button validates user data - saves user data>
+    ---Spotify Loads---
+    <Generates Playlist of travel time length>
+        <Filter options>
+            <Genre>
+            <Artists>
+            <Release Date>
+            <etc.>
+        <Submit - saves user preferences and updates Playlist>
+    <Option to save playlist to user favorites>
+
+Front-end:
+1. Wireframe of UX design layout
+2. Build the bootstrap grid
+3. Create IDs/classes for the user input fields to pass through to the APIs
+
+Back-end:
+1. Get Google Maps API working
+2. Determine if we can use the Spotify API for this project, or if we need a different audio service
+
+
+
+
+        

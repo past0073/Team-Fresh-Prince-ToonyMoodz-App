@@ -1,21 +1,31 @@
+
 $(".search-icon").on("click", function(e) {
     e.preventDefault(); 
-    $("#weather-display").empty();
+
     var city = $(".search-bar").val().trim();
+    $("#weather-display").empty();
     const settings = {
         "async": true,
         "crossDomain": true,
         "url": "https://api.weatherbit.io/v2.0/current?city=" + city + "&units=I&include=minutely&key=f9b72c322157431f92010fd9c3d81acd",
         "method": "GET",
     };
+    console.log(city);
     console.log(settings.url);
 
+    
+    
     $.ajax(settings).done(function (response) {
         console.log(response);
         console.log(response.data[0].temp);
+        var cityName = city.substr(0, city.indexOf(','));
+        var cityHeader = $("<h2>").text(cityName).addClass("city-header");
+        $("#weather-display").append(cityHeader);
         var icon = "https://www.weatherbit.io/static/img/icons/" + response.data[0].weather.icon + ".png";
         var newIcon = $("<img>");
-        newIcon.attr("src", icon);
+        newIcon.attr({
+            src: icon,
+            class: "icon"});
         $("#weather-display").append(newIcon);
 
         var weatherData = [response.data[0].weather.description, "Temperature: " + Math.floor(response.data[0].temp) + " °F", "Humidity: " + response.data[0].rh + "%", "Wind: " + response.data[0].wind_spd + " MPH"];
@@ -125,10 +135,28 @@ function runDeezerAPI() {
         $("#music-display").append(albumEl);
         
         
-        var rythm = new Rythm()
-        rythm.crossOrigin = "anonymous"
-        rythm.setMusic(response.preview)
-        rythm.start()
+        var rythm = new Rythm();
+        rythm.crossOrigin = "anonymous";
+        rythm.setMusic(response.preview);
+        rythm.start();
+        
         });
 };
 
+function auto(){
+    const input = document.getElementById("pac-input");
+    
+    const options = {
+      fields: ["formatted_address", "geometry.location", "name"],
+      strictBounds: false,
+      types: ['(cities)']
+    };
+    
+
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
+    const place = autocomplete.getPlace();
+    console.log(place);
+    return place;
+}
+google.maps.event.addDomListener(window, 'load', auto);
+console.log(place.formatted_address);
