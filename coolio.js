@@ -105,34 +105,42 @@ function runDeezerAPI() {
 
         console.log(response);
 
+        
+
+        //Append song title
+        titleEl = $("<p>");
+        titleEl.attr("class", "song-title");
+        // titleEl.html("Track title: " + response.title);
+        titleEl.html(response.title);
+        $("#music-display").append(titleEl);
+      
+        //Append artist
+        artistEl = $("<p>");
+        artistEl.attr("class", "song-artist");
+        // artistEl.html("Artist: " + response.artist.name);
+        artistEl.html(response.artist.name);
+        $("#music-display").append(artistEl);
+
+        //Append album art
+        albumEl = $("<img>");
+        albumEl.attr("class", "song-art");
+        albumEl.attr("src", response.album.cover_medium);
+        $("#music-display").prepend(albumEl);
+
         //Create an audio div with controls to append song information to
         audioEl = $("<audio>");
+        audioEl.attr("class", "song-controller");
         audioEl.attr("id", "song");
         audioEl.attr("autoplay", true);
         audioEl.attr("controls", true);
         audioEl.attr("volume", 0.01);
-        $("#music-display").prepend(audioEl);
+        $("#music-display").append(audioEl);
 
         //Append song to audio player div
         var songEl = $("<source>");
         songEl.attr("src", response.preview);
         songEl.attr("type", "audio/mpeg");
         audioEl.prepend(songEl);
-
-        //Append song title
-        titleEl = $("<p>");
-        titleEl.html("Track title: " + response.title);
-        $("#music-display").append(titleEl);
-      
-        //Append artist
-        artistEl = $("<p>");
-        artistEl.html("Artist: " + response.artist.name);
-        $("#music-display").append(artistEl);
-
-        //Append album art
-        albumEl = $("<img>");
-        albumEl.attr("src", response.album.cover_medium);
-        $("#music-display").append(albumEl);
         
         
         var rythm = new Rythm();

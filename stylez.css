@@ -1,11 +1,10 @@
+/* GLOBAL */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* F953C6 */
 
 body {
     font-family: "Owsald", sans-serif;
@@ -28,10 +27,11 @@ main {
     text-align: center;
 }
 
+/* TITLE */
 .title {
     font-family: "Owsald", sans-serif;
     font-weight: 700;
-    margin-top: 5rem;
+    margin-top: 1rem;
 }
 
 .title span {
@@ -45,6 +45,7 @@ main {
     margin: 0 auto;
 }
 
+/* SEARCH */
 .search-cnt {
     position: relative;
     border: 2px #000 solid;
@@ -71,4 +72,103 @@ main {
     right: 10px;
     width: 20px;
     cursor: pointer;
+}
+
+/* SEARCH RESULTS */
+.result-wrapper {
+    width: 90%;
+    max-width: 700px;
+    margin: 2rem auto 0 auto;
+}
+
+#weather-display {
+    width: 100%;
+}
+
+#music-display {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+/* Weather Display */
+#weather-display {
+    margin: 0 auto;
+    padding-bottom: 1.5rem;
+    max-width: 300px;
+    border-bottom: 2px dotted #000;
+}
+
+.city-header {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.icon {
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+}
+
+/* Music Display */
+#music-display {
+    margin: 0 auto;
+    max-width: 300px;
+    padding-top: 1.5rem;
+}
+
+
+.song-art {
+    width: 125px;
+    margin: 0 auto;
+}
+
+.song-title {
+    font-weight: 600;
+}
+
+.song-artist {
+    font-style: italic;
+    font-weight: 200;
+}
+
+.song-controller {
+    margin: 0 auto;
+    outline: none;
+}
+
+/* LARGER SCREEN STYLING */
+@media (min-width: 700px) {
+    .result-wrapper {
+        width: 90%;
+        margin: 5rem auto 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    #weather-display {
+        width: 40%;
+        border-bottom: none;
+        margin: 0;
+    }
+    
+    #music-display {
+        margin: 0;
+        width: 40%;
+    }
+
+    /* CITY DISPLAY */
+    .city-header {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    .icon {
+        width: 100px;
+    }
+
+    /* MUSIC DISPLAY */
+    .song-art {
+        width: 175px;
+        margin: 0 auto;
+    }
 }
