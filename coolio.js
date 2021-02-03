@@ -138,19 +138,13 @@ function runDeezerAPI() {
         });
 };
 
+// This function pulls in the Google Maps places library, specifically to autocomplete a city when a user starts typing input.
+
 function auto(){
     const input = document.getElementById("pac-input");
-    
     const options = {
-      fields: ["formatted_address", "geometry.location", "name"],
-      strictBounds: false,
       types: ['(cities)']
     };
-    
-
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
-    const place = autocomplete.getPlace();
-
+    new google.maps.places.Autocomplete(input, options);
 }
 google.maps.event.addDomListener(window, 'load', auto);
-
