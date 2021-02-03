@@ -16,7 +16,7 @@ $(".search-icon").on("click", function(e) {
         console.log(response.data[0].temp);
         var cityName = city.substr(0, city.indexOf(','));
         var cityHeader = $("<h2>").text(cityName).addClass("city-header");
-        $("#weather-display").addClass("animate_animated", "animate__fadeInDown");
+        $("#weather-display").addClass("animate_animated animate__fadeInDown");
         $("#weather-display").append(cityHeader);
         var icon = "https://www.weatherbit.io/static/img/icons/" + response.data[0].weather.icon + ".png";
         var newIcon = $("<img>");
@@ -107,7 +107,7 @@ function runDeezerAPI() {
         titleEl.attr("class", "song-title");
         // titleEl.html("Track title: " + response.title);
         titleEl.html(response.title);
-        $("music-display").addClass("animate_animated", "animate__fadeInDown");
+        $("music-display").addClass("animate_animated animate__fadeInDown");
         $("#music-display").append(titleEl);
       
         //Append artist
