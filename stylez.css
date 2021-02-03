@@ -10,19 +10,6 @@ body {
     font-family: "Owsald", sans-serif;
 }
 
-header {
-    margin: 0 auto;
-    height: 10vh;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-}
-
-header img {
-    cursor: pointer;
-}
-
 main {
     text-align: center;
 }
@@ -31,7 +18,7 @@ main {
 .title {
     font-family: "Owsald", sans-serif;
     font-weight: 700;
-    margin-top: 1rem;
+    margin-top: 10vh;
 }
 
 .title span {
