@@ -1,30 +1,51 @@
 
+// setting up the search icon button
 $(".search-icon").on("click", function(e) {
     e.preventDefault(); 
 
+    // takes the value of user input and stores it in a value called city
     var city = $(".search-bar").val().trim();
+    // if there's anything in the display, clear it
     $("#weather-display").empty();
+
+    // setting up some stuff for our ajax call
+
     const settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.weatherbit.io/v2.0/current?city=" + city + "&units=I&include=minutely&key=f9b72c322157431f92010fd9c3d81acd",
+        "url": "https://api.weatherbit.io/v2.0/current?city=" + city + "&units=I&include=minutely&key=435d03693b574180abf7739fb16f6d8f",
         "method": "GET",
+      
     };
    
+    // ajax call here with settings paramaters
     $.ajax(settings).done(function (response) {
+        
+        // debugging
         console.log(response);
         console.log(response.data[0].temp);
+
+        // Gets just the city name (data comes in from google as "CITY, STATE, COUNTRY")
         var cityName = city.substr(0, city.indexOf(','));
+        // Gives some classes to the city, including animation
         var cityHeader = $("<h2>").text(cityName).addClass("city-header animate__animated animate__fadeInLeft");
         
-        $("#weather-display").append(cityHeader).addClass("animate__animated animate__fadeInLeft");;
+        // starting to populate the weather display div
+        $("#weather-display").append(cityHeader).addClass("animate__animated animate__fadeInLeft");
+
+        // setting up some details for the weather icon
         var icon = "https://www.weatherbit.io/static/img/icons/" + response.data[0].weather.icon + ".png";
         var newIcon = $("<img>");
         newIcon.attr({
             src: icon,
             class: "icon animate__animated animate__fadeInLeft"});
+
+        // putting it in the weather div
         $("#weather-display").append(newIcon);
 
+
+        // an array of weather data to loop through, add some classes and animation, and add it to the page.
+        // index 0 is description, index 1 is Temp, index 2 is humidity, index 3 is wind speed 
         var weatherData = [response.data[0].weather.description, "Temperature: " + Math.floor(response.data[0].temp) + " °F", "Humidity: " + response.data[0].rh + "%", "Wind: " + response.data[0].wind_spd + " MPH"];
         for (i = 0; i < weatherData.length; i++) {
             var newWeatherItem = $("<p>");
@@ -45,6 +66,7 @@ $(".search-icon").on("click", function(e) {
         hazySongs = ["4952885"];
         foggySongs = ["1204958922"];
 
+        // setting up conditions for which songs to assign given certain weather conditions. The weather codes work nicely for this because they are organized numerically
         weatherCode = response.data[0].weather.code
         
         if (weatherCode > 199 && weatherCode < 234) {
@@ -79,27 +101,33 @@ $(".search-icon").on("click", function(e) {
         }
 
         runDeezerAPI();
-    });
+    }).fail(function(){
+        alert("City must be formatted as CITY, STATE, COUNTRY");
+        location.reload();
+      });;
 });
 
+// Setting up the music end of the app through Deezer
 function runDeezerAPI() {
-
-    event.preventDefault();
+    // if there's anything in that div, remove it
     $("#music-display").empty();
 
+    // paramaters for deezer Ajax call
     const settings = {
         "async": true,
             "crossDomain": true,
             "url": "https://deezerdevs-deezer.p.rapidapi.com/track/" + query,
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": "3a0b24119bmsh146e1af8ec6ab63p1333d4jsn7c3220356a72",
-                "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+                "x-rapidapi-key": "a0e59e21b7msh772fee618ca96dap11d7bfjsn2332dc0de1b2",
+		        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
             }
         }
-
+    
+    // pulling in the Deezer API now with an ajax call
     $.ajax(settings).done(function (response) {
 
+        //debug
         console.log(response);      
 
         //Append song title
@@ -127,9 +155,11 @@ function runDeezerAPI() {
         audioEl = $("<audio>");
         audioEl.attr("class", "song-controller animate__animated animate__fadeInRight");
         audioEl.attr("id", "song");
+        //Song automatically plays on load
         audioEl.attr("autoplay", true);
         audioEl.attr("controls", true);
-        audioEl.attr("volume", 0.01);
+        //If browser allows, reduce volume
+        audioEl.attr("volume", 0.1);
         $("#music-display").append(audioEl);
 
         //Append song to audio player div
@@ -143,10 +173,18 @@ function runDeezerAPI() {
 // This function pulls in the Google Maps places library, specifically to autocomplete a city when a user starts typing input.
 
 function auto(){
+
+    // Get the city from that search div
     const input = document.getElementById("pac-input");
+    // Paramters for places auto complete. Limit to just cities in the United States
     const options = {
-      types: ['(cities)']
+      types: ['(cities)'],
+      componentRestrictions: { country: "us" }
     };
+
+    // Pull in the autocomplete with arguments of input and options
     new google.maps.places.Autocomplete(input, options);
 }
+
+// Bring in the autocomplete as soon as the page loads
 google.maps.event.addDomListener(window, 'load', auto);
