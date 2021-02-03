@@ -15,21 +15,21 @@ $(".search-icon").on("click", function(e) {
         console.log(response);
         console.log(response.data[0].temp);
         var cityName = city.substr(0, city.indexOf(','));
-        var cityHeader = $("<h2>").text(cityName).addClass("city-header");
-        $("#weather-display").addClass("animate_animated animate__fadeInDown");
-        $("#weather-display").append(cityHeader);
+        var cityHeader = $("<h2>").text(cityName).addClass("city-header animate__animated animate__fadeInLeft");
+        
+        $("#weather-display").append(cityHeader).addClass("animate__animated animate__fadeInLeft");;
         var icon = "https://www.weatherbit.io/static/img/icons/" + response.data[0].weather.icon + ".png";
         var newIcon = $("<img>");
         newIcon.attr({
             src: icon,
-            class: "icon"});
+            class: "icon animate__animated animate__fadeInLeft"});
         $("#weather-display").append(newIcon);
 
         var weatherData = [response.data[0].weather.description, "Temperature: " + Math.floor(response.data[0].temp) + " °F", "Humidity: " + response.data[0].rh + "%", "Wind: " + response.data[0].wind_spd + " MPH"];
         for (i = 0; i < weatherData.length; i++) {
             var newWeatherItem = $("<p>");
             newWeatherItem.text(weatherData[i]);
-            newWeatherItem.attr("class", "weather-item");
+            newWeatherItem.attr("class", "animate__animated animate__fadeInLeft");
             $("#weather-display").append(newWeatherItem);
         }
 
@@ -104,28 +104,28 @@ function runDeezerAPI() {
 
         //Append song title
         titleEl = $("<p>");
-        titleEl.attr("class", "song-title");
+        titleEl.attr("class", "song-title animate__animated animate__fadeInRight")
         // titleEl.html("Track title: " + response.title);
         titleEl.html(response.title);
-        $("music-display").addClass("animate_animated animate__fadeInDown");
+        
         $("#music-display").append(titleEl);
       
         //Append artist
         artistEl = $("<p>");
-        artistEl.attr("class", "song-artist");
+        artistEl.attr("class", "song-artist animate__animated animate__fadeInRight");
         // artistEl.html("Artist: " + response.artist.name);
         artistEl.html(response.artist.name);
         $("#music-display").append(artistEl);
 
         //Append album art
         albumEl = $("<img>");
-        albumEl.attr("class", "song-art");
+        albumEl.attr("class", "song-art animate__animated animate__fadeInRight");
         albumEl.attr("src", response.album.cover_medium);
         $("#music-display").prepend(albumEl);
 
         //Create an audio div with controls to append song information to
         audioEl = $("<audio>");
-        audioEl.attr("class", "song-controller");
+        audioEl.attr("class", "song-controller animate__animated animate__fadeInRight");
         audioEl.attr("id", "song");
         audioEl.attr("autoplay", true);
         audioEl.attr("controls", true);
