@@ -10,11 +10,7 @@ $(".search-icon").on("click", function(e) {
         "url": "https://api.weatherbit.io/v2.0/current?city=" + city + "&units=I&include=minutely&key=f9b72c322157431f92010fd9c3d81acd",
         "method": "GET",
     };
-    console.log(city);
-    console.log(settings.url);
-
-    
-    
+   
     $.ajax(settings).done(function (response) {
         console.log(response);
         console.log(response.data[0].temp);
@@ -37,8 +33,8 @@ $(".search-icon").on("click", function(e) {
         }
 
         //Song arrays for each type of weather condition:
-        sunnySongs = ["3166724", "1175777", "75711295", "666286232", "90326361", "1094034052", "828216172", "1040347", "116348464", "1106540662", "3091978"];
-        cloudySongs = ["482643502", "2607674","3599559", "9956008", "65707299", "581533", "144469614", "1101367912", "121876594", "75623960", "637766082", "3128096"]
+        sunnySongs = ["3166724", "1175777", "75711295", "666286232", "90326361", "1094034052", "144469614", "828216172", "1040347", "116348464", "1106540662", "3091978"];
+        cloudySongs = ["482643502", "2607674","3599559", "9956008", "65707299", "581533", "1101367912", "121876594", "75623960", "637766082", "3128096"]
         rainySongs = ["6069361", "1169683", "2794654", "705016142"];
         snowySongs = ["3659065", "111624866", "75624084", "576178942"];
         stormySongs = ["65445466", "1205382872", "92720102"];
@@ -103,9 +99,7 @@ function runDeezerAPI() {
 
     $.ajax(settings).done(function (response) {
 
-        console.log(response);
-
-        
+        console.log(response);      
 
         //Append song title
         titleEl = $("<p>");
@@ -141,13 +135,6 @@ function runDeezerAPI() {
         songEl.attr("src", response.preview);
         songEl.attr("type", "audio/mpeg");
         audioEl.prepend(songEl);
-        
-        
-        var rythm = new Rythm();
-        rythm.crossOrigin = "anonymous";
-        rythm.setMusic(response.preview);
-        rythm.start();
-        
         });
 };
 
