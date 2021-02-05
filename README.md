@@ -16,9 +16,6 @@ Welcome to ToonyMoodz, the app that brings you your daily forecast with a side o
 * WeatherBit API
 * Deezer API
 * Google Maps Places API
-### Contributors
-
-Frank Merchlewitz, Mitch Lindquist, Jayden Watts, and Amy Pastorius.
 
 Live URL: https://frank-merk.github.io/Team-Fresh-Prince-ToonyMoodz-App/
 
