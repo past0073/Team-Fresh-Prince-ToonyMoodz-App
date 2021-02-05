@@ -1,4 +1,4 @@
-# Team-Fresh-Prince: Road-Trip-Soundtrack-App
+# Team-Fresh-Prince: ToonyMoodz App
 
 ### Overview
 
