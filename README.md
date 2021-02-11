@@ -28,7 +28,7 @@ Screenshots:
 ### Contributors
 Jayden Watts, Frank Merchlewitz, Mitch Lindquist, and Amy Pastorius.
 
-# License 
+### License 
 
 The MIT License (MIT)
 
